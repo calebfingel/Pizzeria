@@ -1,0 +1,25 @@
+{% extends "pizzas/base.html" %} 
+{% load static %}
+{% block content %}
+<style>
+    .center {
+      margin: auto;
+      width: 8%;
+      border: 10px solid green;
+      padding: 15px;
+    }
+    .textarea {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<div class='center'>
+    <form action='.' method='POST'> {% csrf_token %}
+        <div class="title">
+            <div>
+                <p>Caleb's Pizzeria</p>
+            </div>
+        </div>
+    
+{% endblock content %}

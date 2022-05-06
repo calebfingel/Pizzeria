@@ -1,0 +1,29 @@
+{% extends "pizzas/base.html" %} 
+
+
+{% block content %}
+
+<p> 
+    Toppings: {{ pizza_name }} 
+</p>
+
+<ul>
+    {% for t in toppings %}
+    
+        
+    <li>
+        <p> {{ t.topping_name }} </p>
+    </li>
+    
+    {% empty %} 
+    <li> There are no options for this pizza.</li>
+    {% endfor %}
+
+</ul>
+
+<p><a href="{% url 'pizzas:comments' pizza.id %}">Add a comment</a></p>
+
+{% load static %}
+<img src="{% static "Wall/media/my_image.png" %}" alt="home" />
+
+{% endblock content %}
