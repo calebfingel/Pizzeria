@@ -41,14 +41,12 @@ def comments (request):
 
     if request.method != 'POST':
         form = CommentForm()
-
     else:
         form = CommentForm(data=request.POST)
 
         if form.is_valid():
             comment = form.save(commit=False)
             comment.save()
-            comment = Comment.objects.get()
             return redirect('pizzas:pizza_options')
-    context = {'form':form, 'comments':comments}
+    context = {'form':form}
     return render(request, 'pizzas/comment.html', context)
