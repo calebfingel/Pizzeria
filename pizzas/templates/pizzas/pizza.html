@@ -20,10 +20,20 @@
     {% endfor %}
 
 </ul>
+<ul>
 
-<p><a href="{% url 'pizzas:comments' pizza.id %}">Add a comment</a></p>
+    <a href="{% url 'pizzas:comments'  %}">Add a comment</a>
 
-{% load static %}
-<img src="{% static "Wall/media/my_image.png" %}" alt="home" />
+</ul>
+
+<body>
+    <img alt="Pizza" src=https://th.bing.com/th/id/OIP.ZAaoAHT38cD5MUv-6JF6xAHaEK?w=289&h=180&c=7&r=0&o=5&pid=1.7>
+</body>
+
+<style>
+    body {
+        background-color: rgba(235, 161, 147, 0.33);
+    }
+</style>
 
 {% endblock content %}

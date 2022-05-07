@@ -1,0 +1,21 @@
+{% extends "pizzas/base.html" %} 
+
+{% block content %} 
+
+<p>Add a comment</p>
+
+<form action="{% url 'pizzas:comments' %}" method='post'>
+
+    {% csrf_token %} 
+    {{form.as_p}}
+
+    <button name='submit'>Add Comment</button>
+</form>
+
+<style>
+    body {
+        background-color: rgba(235, 161, 147, 0.33);
+    }
+</style>
+
+{% endblock content %}

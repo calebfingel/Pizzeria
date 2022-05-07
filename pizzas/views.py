@@ -25,7 +25,7 @@ def pizza(request, pizza_id):
     context = {'toppings':toppings}
     template = loader.get_template('pizzas/pizza.html')
      
-    return HttpResponse(template.render(context,'pizzas/pizza.html', request))
+    return render(request, 'pizzas/pizza.html', context)
     
          
 
@@ -37,8 +37,7 @@ def toppings(request,topping_id,pizza_id):
 
     return render(request, 'pizzas/pizza.html', context)
 
-def comments (request, comment_id):
-    comment = Comment.objects.get(id=comment_id)
+def comments (request):
 
     if request.method != 'POST':
         form = CommentForm()
@@ -47,9 +46,9 @@ def comments (request, comment_id):
         form = CommentForm(data=request.POST)
 
         if form.is_valid():
-            new_comment = form.save(commit=False)
-            new_comment.pizzas = comment
-            new_comment.save()
-            return redirect('pizzas:pizza_menu', id= comment_id)
-    context = {'form':form, 'comment': comment}
-    return render(request, 'pizzas/new_comment.html', context)
+            comment = form.save(commit=False)
+            comment.save()
+            comment = Comment.objects.get()
+            return redirect('pizzas:pizza_options')
+    context = {'form':form, 'comments':comments}
+    return render(request, 'pizzas/comment.html', context)
